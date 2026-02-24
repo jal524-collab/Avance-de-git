@@ -6,13 +6,16 @@ import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 
+import views.FormularioRegistro;
 import views.LoginWindow;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		LoginWindow ventanita = new LoginWindow();
+		//LoginWindow ventanita = new LoginWindow();
+		
+		FormularioRegistro formulario = new FormularioRegistro();
 	}
 	
 	public static void showOnScreen(int screen, JFrame frame ) {
