@@ -8,14 +8,18 @@ import javax.swing.JFrame;
 
 import views.FormularioRegistro;
 import views.LoginWindow;
+import views.MainView;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		//LoginWindow ventanita = new LoginWindow();
+		LoginWindow ventanita = new LoginWindow();
 		
-		FormularioRegistro formulario = new FormularioRegistro();
+		//FormularioRegistro formulario = new FormularioRegistro();
+		
+		//MainView vista = new MainView();
+		
 	}
 	
 	public static void showOnScreen(int screen, JFrame frame ) {

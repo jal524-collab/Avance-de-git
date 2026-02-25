@@ -25,6 +25,8 @@ public class LoginWindow extends JFrame {
 	    LoginView panelito = new LoginView();
 	    add(panelito);
 	    
+	   
+	    
 	    setVisible(true);
 	}
 	

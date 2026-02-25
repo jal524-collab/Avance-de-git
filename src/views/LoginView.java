@@ -12,8 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import components.LoginButton;
 import components.RoundButton;
 import components.TextPrompt;
+
+import javax.imageio.*;
+import java.io.*;
 
 public class LoginView extends JPanel{
 	
@@ -39,15 +43,22 @@ Font fuente;
 
 	private void crearBotones() {
 		
-
-		JButton boton = new JButton("Iniciar sesión");
-		boton.setBounds(250,320,120,30);
-		RoundButton boton1 = new RoundButton("Login");
-		boton1.setBounds(250,320,150,30);
-		boton1.setBackground(Color.GREEN);
+		LoginButton boton1 = new LoginButton("Iniciar Sesion");
+		boton1.setBounds(250,320,160,60);
 		boton1.setToolTipText("Haz click aquí");
 		boton1.setFont(fuente);
-				
+		
+		
+		
+		/*try {
+			Image caja = ImageIO.read(getClass().getResource("/img/caja.png"));
+			
+			caja = caja.getScaledInstance(30, 20, java.awt.Image.SCALE_SMOOTH);
+			boton1.setIcon(new ImageIcon(caja));
+			
+		}catch(Exception ex) {
+			System.out.println("No hay imagen");
+		}*/
 
 		add(boton1);
 		
@@ -58,11 +69,6 @@ Font fuente;
 
 	private void crearFormulario() {
 		
-		JLabel lblSaludo = new JLabel("Bienvenido!");
-		lblSaludo.setFont(fuente);
-		lblSaludo.setBounds(10,0,200,40);
-		add(lblSaludo);
-
 		int lblX = 10, y = 170, txtX = 150;
 		
 
@@ -79,13 +85,15 @@ Font fuente;
 		add(txtEmail);
 		
 
+		
+		
 		JLabel lblEmailRequerido = new JLabel("El email es requerido.");
 		lblEmailRequerido.setBounds(txtX, y+35, 200, 30);
-		lblEmailRequerido.setFont(new Font("Arial", Font.BOLD, 10));
+		lblEmailRequerido.setFont(new Font("Arial", Font.BOLD, 14));
 		lblEmailRequerido.setForeground(Color.RED);
 		add(lblEmailRequerido);
 		
-
+		
 		y += 70;
 		
 
@@ -114,6 +122,5 @@ Font fuente;
 		add(errorSegundo);
 	}
 	
-
 
 }

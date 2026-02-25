@@ -22,10 +22,10 @@ public class FormularioRegistro extends JFrame{
 	
 	public FormularioRegistro() {
 		
-		setSize(350, 600);
+		setSize(450, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
-		setTitle("Registro");
+		setTitle("Registro de Paquete");
 		setLocationRelativeTo(null);
 		
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -40,7 +40,7 @@ public class FormularioRegistro extends JFrame{
 	public void inicializarComponentes() {
 		
 		
-		JLabel lblTitulo = new JLabel("Registro de Formulario");
+		JLabel lblTitulo = new JLabel("Registro de Paquete");
 		lblTitulo.setFont(AppFont.title());
 		add(lblTitulo, BorderLayout.NORTH);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -51,7 +51,7 @@ public class FormularioRegistro extends JFrame{
 		panelComponentes.setBackground(Color.LIGHT_GRAY);
 		
 		for(int i = 0; i < 20; i++) {
-			JLabel lbl = new JLabel("Campo " + i);
+			JLabel lbl = new JLabel("Paquete " + i);
 			panelComponentes.add(lbl);
 			JTextField txt = new JTextField(10);
 			panelComponentes.add(txt);
