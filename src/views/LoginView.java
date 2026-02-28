@@ -2,6 +2,8 @@ package views;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.imageio.ImageIO;
@@ -22,6 +24,7 @@ import java.io.*;
 public class LoginView extends JPanel{
 	
 Font fuente;
+
 	
 
 	public LoginView() {
@@ -47,25 +50,27 @@ Font fuente;
 		boton1.setBounds(250,320,160,60);
 		boton1.setToolTipText("Haz click aquí");
 		boton1.setFont(fuente);
-		
-		
-		
-		/*try {
-			Image caja = ImageIO.read(getClass().getResource("/img/caja.png"));
-			
-			caja = caja.getScaledInstance(30, 20, java.awt.Image.SCALE_SMOOTH);
-			boton1.setIcon(new ImageIcon(caja));
-			
-		}catch(Exception ex) {
-			System.out.println("No hay imagen");
-		}*/
 
 		add(boton1);
-		
-
 	}
 	
 	
+	
+	public void cargarFondo(Graphics g) {
+		
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		
+		Image fondo = null;
+		
+		try {
+			fondo = ImageIO.read(new File("src/img/fondo.jpg"));
+			g2.drawImage(fondo, 0, 0, getWidth(), getHeight(), null);
+		} catch (IOException ex) {
+			System.out.println("La imagen no existe");
+		}
+		
+	}
 
 	private void crearFormulario() {
 		

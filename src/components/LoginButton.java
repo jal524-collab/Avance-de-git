@@ -3,6 +3,8 @@ package components;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -11,10 +13,12 @@ import javax.swing.JButton;
 public class LoginButton extends JButton{
 	
 	Image caja;
+	Image fondo;
 	
 	public LoginButton(String text) {
 		super(text);
 		cargarImagen();
+		
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -34,5 +38,6 @@ public class LoginButton extends JButton{
 			System.out.println("No hay imagen");
 		}
 	}
+	
 	
 }
