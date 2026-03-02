@@ -26,7 +26,7 @@ import java.io.*;
 
 public class LoginView extends JPanel{
 	
-Font fuente;
+Font font;
 JTextField emailField;
 JPasswordField passwordField;
 JLabel lblEmailRequired;
@@ -35,7 +35,7 @@ JLabel lblPasswordRequired;
 	public LoginView() {
 		
 
-		fuente = new Font("Arial", Font.PLAIN, 14);
+		font = new Font("Arial", Font.PLAIN, 14);
 		setLayout(null);
 		
 
@@ -54,7 +54,7 @@ JLabel lblPasswordRequired;
 		LoginButton boton1 = new LoginButton("Iniciar Sesion");
 		boton1.setBounds(250,320,160,60);
 		boton1.setToolTipText("Haz click aquí");
-		boton1.setFont(fuente);
+		boton1.setFont(font);
 
 		add(boton1);
 		
@@ -97,57 +97,49 @@ JLabel lblPasswordRequired;
 
 	private void crearFormulario() {
 		
-		int lblX = 10, y = 170, txtX = 150;
+		JLabel lblGreeting = new JLabel("Bienvenido!");
+		lblGreeting.setFont(font);
+		lblGreeting.setBounds(10,0,200,40);
+		add(lblGreeting);
 		
-
+		int labelX = 10, positionY = 170, textX = 150;
+		
 		JLabel lblEmail = new JLabel("Email: ");
-		lblEmail.setFont(fuente);
-		lblEmail.setBounds(lblX,y,200,40);
+		lblEmail.setFont(font);
+		lblEmail.setBounds(labelX,positionY,200,40);
 		add(lblEmail);
 		
-
 		emailField = new JTextField();
 		new TextPrompt("Ingresa tu usuario", emailField);
-		emailField.setFont(getFont());
-		emailField.setBounds(txtX,y,200,40);
+		emailField.setFont(font);
+		emailField.setBounds(textX,positionY,200,40);
 		add(emailField);
 		
-
+		lblEmailRequired = new JLabel("El email es requerido.");
+		lblEmailRequired.setBounds(textX, positionY+35, 200, 30);
+		lblEmailRequired.setFont(new Font("Arial", Font.BOLD, 10));
+		lblEmailRequired.setForeground(Color.RED);
+		lblEmailRequired.setVisible(false);
+		add(lblEmailRequired);
 		
+		positionY += 70;
 		
-		JLabel lblEmailRequerido = new JLabel("El email es requerido.");
-		lblEmailRequerido.setBounds(txtX, y+35, 200, 30);
-		lblEmailRequerido.setFont(new Font("Arial", Font.BOLD, 14));
-		lblEmailRequerido.setForeground(Color.RED);
-		add(lblEmailRequerido);
+		JLabel lblPasswordLabel = new JLabel("Contraseña: ");
+		lblPasswordLabel.setFont(font);
+		lblPasswordLabel.setBounds(labelX,positionY,200,40);
+		add(lblPasswordLabel);
 		
-		
-		y += 70;
-		
-
-		JLabel lblContrasena = new JLabel("Contrasena: ");
-		lblContrasena.setFont(fuente);
-		lblContrasena.setBounds(lblX,y,200,40);
-		add(lblContrasena);
-		
-
 		passwordField = new JPasswordField();
-		TextPrompt promptContrasena = new TextPrompt("Ingresa tu contraseña", passwordField);
-		passwordField.setFont(fuente);
-		passwordField.setBounds(txtX,y,200,40);
+		new TextPrompt("Ingresa tu contraseña", passwordField);
+		passwordField.setFont(font);
+		passwordField.setBounds(textX,positionY,200,40);
 		add(passwordField);
 		
-		JLabel errorInicial = new JLabel("No existe ese correo");
-		errorInicial.setBounds(txtX,y,300,15);
-		errorInicial.setForeground(Color.RED);
-		errorInicial.setFont(fuente);
-		add(errorInicial);
-		
-		JLabel errorSegundo = new JLabel("Contrasenia erronea");
-		errorSegundo.setBounds(txtX,y,300,15);
-		errorSegundo.setForeground(Color.RED);
-		errorSegundo.setFont(fuente);
-		add(errorSegundo);
+		lblPasswordRequired = new JLabel("");
+		lblPasswordRequired.setBounds(textX, positionY+35, 200, 30);
+		lblPasswordRequired.setFont(new Font("Arial", Font.BOLD, 10));
+		lblPasswordRequired.setForeground(Color.RED);
+		add(lblPasswordRequired);
 	}
 	
 	private void handleLogin() {
