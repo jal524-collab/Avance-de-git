@@ -22,7 +22,7 @@ public class BorderPanel extends JPanel {
 		JPanel panelSuperior = new JPanel();
 		panelSuperior.setBackground(Color.GREEN);
 		add(panelSuperior, BorderLayout.NORTH);
-
+ 
 		JButton b = new JButton("Hola");
 		panelSuperior.add(b);
 
@@ -34,6 +34,8 @@ public class BorderPanel extends JPanel {
 		JButton btnSur = new JButton("SUR");
 		add(btnSur, BorderLayout.SOUTH);
 	}
+	
+	
 
 	public void crearPanelCentro() {
 		JPanel panelCentro = new JPanel(new BorderLayout());

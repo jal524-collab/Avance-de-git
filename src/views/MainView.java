@@ -15,7 +15,6 @@ public class MainView extends JFrame {
 		setTitle("Vista de menu");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		setMenu();
 		setVisible(true);
 		

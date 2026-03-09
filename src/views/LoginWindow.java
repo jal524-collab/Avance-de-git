@@ -22,10 +22,10 @@ public class LoginWindow extends JFrame {
 	    setLocationRelativeTo(null); // Esto la centra en pantalla
 
 	    // 3. Agregar SOLO el panel de Login (comenta el de GridBag por ahora)
-	    LoginView panelito = new LoginView();
+	    LoginView panelito = new LoginView(this);
 	    add(panelito);
 	    
-	   
+	   LoginView loginView = new LoginView(this);
 	    
 	    setVisible(true);
 	}

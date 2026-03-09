@@ -16,9 +16,6 @@ public class Main {
 		
 		LoginWindow ventanita = new LoginWindow();
 		
-		//FormularioRegistro formulario = new FormularioRegistro();
-		
-		//MainView vista = new MainView();
 		
 	}
 	
