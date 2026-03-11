@@ -9,14 +9,17 @@ import javax.swing.JFrame;
 import views.FormularioRegistro;
 import views.LoginWindow;
 import views.MainView;
+import views.ejemplos.BorderPanel;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		LoginWindow ventanita = new LoginWindow();
+		  
+		//BorderPanel panelito = new BorderPanel(null);
 		
-		
+		//MainView menu = new MainView();
 	}
 	
 	public static void showOnScreen(int screen, JFrame frame ) {

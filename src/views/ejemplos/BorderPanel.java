@@ -4,15 +4,27 @@ package views.ejemplos;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-public class BorderPanel extends JPanel {
+import views.LoginView;
+import views.LoginWindow;
+import views.MainView;
 
-	public BorderPanel() {
+public class BorderPanel extends JPanel {
+	
+	LoginWindow panel;
+	
+
+	public BorderPanel(LoginWindow panel) {
+		
+		this.panel = panel;
+	
 		setLayout(new BorderLayout());
 		setBackground(Color.BLUE);
 		//setBackground(Color.BLUE);
@@ -53,5 +65,22 @@ public class BorderPanel extends JPanel {
 
 		add(panelCentro, BorderLayout.CENTER);
 
+	}
+	
+	private void handleLogin() {
+		
+			
+			new MainView();
+			panel.dispose();
+			
+		new LoginView(null);
+		panel.dispose();
+	}
+
+
+
+	private static void dispose() {
+		// TODO Auto-generated method stub
+		
 	}
 }

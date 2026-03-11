@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ import javax.swing.JTextField;
 import components.LoginButton;
 import components.RoundButton;
 import components.TextPrompt;
+import views.ejemplos.BorderPanel;
 
 import javax.imageio.*;
 import java.io.*;
@@ -68,8 +70,7 @@ JLabel contrasena;
 			
 	        public void mouseEntered(MouseEvent e) {
 
-	            boton1.setBackground(Color.DARK_GRAY);
-
+	            boton1.setBackground(Color.BLACK);
 	            boton1.repaint();
 	        }
 
@@ -122,6 +123,9 @@ JLabel contrasena;
 		JLabel lblEmail = new JLabel("Email: ");
 		lblEmail.setFont(fuente);
 		lblEmail.setBounds(labelX,positionY,200,40);
+		lblEmail.setForeground(Color.LIGHT_GRAY);
+		lblEmail.setBackground(Color.white);
+		lblEmail.repaint();
 		add(lblEmail);
 		
 		emailField = new JTextField();
@@ -142,6 +146,9 @@ JLabel contrasena;
 		JLabel lblPasswordLabel = new JLabel("Contraseña: ");
 		lblPasswordLabel.setFont(fuente);
 		lblPasswordLabel.setBounds(labelX,positionY,200,40);
+		lblPasswordLabel.setForeground(Color.LIGHT_GRAY);
+		lblPasswordLabel.setBackground(Color.white);
+		lblPasswordLabel.repaint();
 		add(lblPasswordLabel);
 		
 		passwordField = new JPasswordField();
@@ -202,5 +209,6 @@ JLabel contrasena;
 		
 		return true;
 		}
-
+	
+	
 }
