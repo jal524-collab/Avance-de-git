@@ -1,12 +1,15 @@
 package views;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -59,29 +62,35 @@ JLabel contrasena;
 		boton1.setBounds(250,320,160,60);
 		boton1.setToolTipText("Haz click aquí");
 		boton1.setFont(fuente);
-
-		add(boton1);
 		
-		
-		/*
-		boton1.addActionListener(new ActionListener() {
+		boton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		boton1.addMouseListener(new MouseAdapter() {
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				JOptionPane.showMessageDialog(null, "Ey! aqui estoy! :D", 
-						"Sesion Iniciada", 
-						JOptionPane.INFORMATION_MESSAGE);
-				
-			}
-		});
-		*/
-		
-		
-		boton1.addActionListener(e -> handleLogin());
-		
+	        public void mouseEntered(MouseEvent e) {
+
+	            boton1.setBackground(Color.DARK_GRAY);
+
+	            boton1.repaint();
+	        }
+
+
+	        public void mouseExited(MouseEvent e) {
+
+	            boton1.setBackground(Color.LIGHT_GRAY); 
+	            boton1.repaint();
+	        }
+	    });
+
+	    add(boton1);
+	    boton1.addActionListener(e -> handleLogin());
 	}
 		
+	protected void handleRegistration() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	public void paintComponent(Graphics g) {
 			
 			super.paintComponent(g);
