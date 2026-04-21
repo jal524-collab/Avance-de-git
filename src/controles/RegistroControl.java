@@ -3,6 +3,7 @@ package controles;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
@@ -13,16 +14,17 @@ import modelo.UserModelo;
 import repositorio.UserRepositorio;
 import views.LoginWindow;
 import views.MainView;
+import views.UserView;
 import views.FormularioRegistro;
 
 public class RegistroControl {
 
-    private RegistrationWindow view;
+    private FormularioRegistro view;
     private UserRepositorio repository;
 
-    public RegistroControl(RegistrationWindow view){
+    public RegistroControl(FormularioRegistro view){
         this.view = view;
-        this.repository = new UserRepository();
+        this.repository = new UserRepositorio();
         registerListeners();
     }
 
@@ -32,7 +34,7 @@ public class RegistroControl {
 
             if(validateForm()){
 
-                User user = new User(
+                UserView user = new User(
                         view.getUserName(),
                         view.getEmail(),
                         view.getCountry(),
@@ -43,7 +45,7 @@ public class RegistroControl {
                 
                 registerUser(user);
                 
-                new HomeController(new MainWindow());
+                new HomeControl(new MainView());
                 view.dispose();
 
             }
@@ -55,7 +57,7 @@ public class RegistroControl {
             int option = view.confirmReturn();
 
             if(option == JOptionPane.YES_OPTION){
-                new LoginController(new LoginWindow().getLoginView());
+                new LoginControlador(new LoginWindow().getLoginView());
                 view.dispose();
             }
 
@@ -126,7 +128,7 @@ public class RegistroControl {
 
     }
     
-    private void registerUser(User user) {
+    private void registerUser(UserModelo user) {
     	
     	try {
     		repository.save(user);

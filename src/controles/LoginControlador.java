@@ -71,7 +71,7 @@ public class LoginControlador {
 				JOptionPane.showMessageDialog(view.getWindow(), "Se inició la sesión", "Sesión iniciada",
 						JOptionPane.INFORMATION_MESSAGE);
 
-				new HomeController(new MainWindow());
+				new HomeControl(new MainView());
 				view.getWindow().dispose();
 			}
 		} catch (InvalidUserException | InvalidPasswordException ex) {

@@ -1,19 +1,23 @@
 package controles;
 
-import repository.UserRepository;
-import tablemodels.UserTableModel;
+import javax.swing.table.DefaultTableModel;
+
+import repositorio.UserRepositorio;
+import repositorio.UserRepositorio;
+import tableModel.UserTableModel;
 import views.UserFormDialog;
-import views.UsersView;
+import views.UserView;
+import views.UserView;
 
 public class UserControl {
 
-	private UsersView view;
-	private UserRepository repo;
-	private UserTableModel model;
+	private UserView view;
+	private UserRepositorio repo;
+	private DefaultTableModel model;
 	
-	public UserControl(UsersView view) {
+	public UserControl(UserView view) {
 		this.view = view;
-		repo = new UserRepository();
+		repo = new UserRepositorio();
 		
 		view.getBtnAdd().addActionListener(e -> {
 			UserFormDialog form = new UserFormDialog(null, null);

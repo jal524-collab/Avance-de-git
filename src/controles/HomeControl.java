@@ -7,17 +7,19 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import modelo.User;
-import repository.UserRepository;
-import tablemodels.UserTableModel;
+import modelo.UserModelo;
+import repositorio.UserRepositorio;
+import repositorio.UserRepositorio;
+import tableModel.UserTableModel;
 import views.LoginWindow;
-import views.MainWindow;
+import views.MainView;
+import views.MainView;
 
 public class HomeControl {
 
-	private MainWindow view;
+	private MainView view;
 	
-	public HomeController(MainWindow view) {
+	public HomeControl(MainView view) {
 		
 		this.view = view;
 		registerListeners();
@@ -39,31 +41,31 @@ public class HomeControl {
 			showUsers();
 		});
 		
-		view.btnHome.addActionListener(e -> view.showView(MainWindow.HOME));
+		view.btnHome.addActionListener(e -> view.showView(MainView.HOME));
 		
 	}
 	
 	private void showUsers() {
 		
-		UserController controller = new UserController(view.usersPanel);
+		UserControl controller = new UserControl(view.usersPanel);
 		
-		UserRepository repository = new UserRepository();
+		UserRepositorio repository = new UserRepositorio();
 		
 		try {
-			List<User> users = repository.getUsers();
+			List<UserModelo> users = repository.getUsers();
 			
 			UserTableModel model = new UserTableModel(users);
 			
 			view.usersPanel.setTableModel(model);
 			
-			view.showView(MainWindow.USERS);
+			view.showView(MainView.USERS);
 			
 		}catch (IOException ex) {
 			JOptionPane.showMessageDialog(view, ex.getMessage());
 		}
 		
 	}
-	
+	 
 	private void handleClose() {
 		/*int option = view.confirmExit();
 		System.out.println(option);

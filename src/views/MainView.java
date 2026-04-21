@@ -34,7 +34,7 @@ public class MainView extends JFrame {
 	public JMenuItem mItemExit;
 	public JButton btnUsers;
 	public JButton btnHome;
-	public UsersView usersPanel;
+	public UserView usersPanel;
 	
 	private CardLayout cardLayout;
 	private JPanel container;
@@ -73,7 +73,7 @@ public class MainView extends JFrame {
 		JPanel homePanel = new JPanel();
 		homePanel.add(new JLabel("Bienvenido al Sistema"));
 		
-		usersPanel = new UsersView();
+		usersPanel = new UserView();
 		
 		container.add(homePanel, HOME);
 		container.add(usersPanel, USERS);
@@ -198,4 +198,4 @@ public class MainView extends JFrame {
 			}
 		});*/
 
-	}
+	}}
