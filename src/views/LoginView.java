@@ -1,5 +1,4 @@
 package views;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -26,7 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
-import components.TextPrompt;
+import lib.SpringUtilities;
+import views.componentes.TextPromt;
 
 public class LoginView extends JPanel {
 
@@ -115,7 +115,7 @@ public class LoginView extends JPanel {
 		formPanel.add(lblEmail);
 
 		emailField = new JTextField();
-		new TextPrompt("Ingresa tu usuario", emailField);
+		new TextPromt("Ingresa tu usuario", emailField);
 		emailField.setFont(font);
 		emailField.setMaximumSize(new Dimension(Integer.MAX_VALUE, emailField.getPreferredSize().height));
 		formPanel.add(emailField);
@@ -134,7 +134,7 @@ public class LoginView extends JPanel {
 		formPanel.add(lblPasswordLabel);
 
 		passwordField = new JPasswordField();
-		new TextPrompt("Ingresa tu contraseña", passwordField);
+		new TextPromt("Ingresa tu contraseña", passwordField);
 		passwordField.setFont(font);
 		passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, passwordField.getPreferredSize().height));
 		formPanel.add(passwordField);
@@ -145,6 +145,8 @@ public class LoginView extends JPanel {
 		lblPasswordRequired.setFont(new Font("Arial", Font.BOLD, 10));
 		lblPasswordRequired.setForeground(Color.RED);
 		formPanel.add(lblPasswordRequired);
+
+		SpringUtilities.makeCompactGrid(formPanel, 4, 2, 0, 0, 10, 10);
 
 		add(formPanel);
 
@@ -210,15 +212,10 @@ public class LoginView extends JPanel {
 		c.setForeground(Color.BLACK);
 	}
 
-	/*
-	 * En el ejemplo anterior la imagen se cargaba dentro del paintComponent, esto
-	 * es una mala prática ya que cada que sea actualiza la ventana se vuelve a
-	 * cargar la imagen. Es mejor tenerla como atributo y que se cargue una sola vez
-	 * en el constructor.
-	 */
+	
 	private void loadImage() {
 		try {
-			backgroundImage = ImageIO.read(new File("src/assets/img/fondo.jpg"));
+			backgroundImage = ImageIO.read(new File("src/img/fondo.jpg"));
 		} catch (IOException ex) {
 			System.out.println("La imagen no existe");
 		}
@@ -245,5 +242,6 @@ public class LoginView extends JPanel {
 		g2.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), null);
 
 	}
+
 
 }

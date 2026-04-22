@@ -14,7 +14,6 @@ import modelo.UserModelo;
 import repositorio.UserRepositorio;
 import views.LoginWindow;
 import views.MainView;
-import views.UserView;
 import views.FormularioRegistro;
 
 public class RegistroControl {
@@ -34,7 +33,7 @@ public class RegistroControl {
 
             if(validateForm()){
 
-                UserView user = new User(
+                UserModelo user = new UserModelo(
                         view.getUserName(),
                         view.getEmail(),
                         view.getCountry(),

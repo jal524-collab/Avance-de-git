@@ -124,17 +124,6 @@ public class UserModelo {
 	    
 	    return new UserModelo(name, email, country, gender, description, languages);
 		
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

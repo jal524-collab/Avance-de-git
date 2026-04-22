@@ -59,7 +59,7 @@ public class LoginControlador {
 
 	private void handleLogin() {
 		
-		UserModelo user = new User(
+		UserModelo user = new UserModelo(
 			view.getEmail(),
 			view.getPassword()
 		); 
@@ -102,5 +102,4 @@ public class LoginControlador {
 			}
 		});
 	}
-
 }

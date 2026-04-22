@@ -5,7 +5,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import modelo.UserModelo;
-import views.UserView;
 
 public class UserTableModel extends AbstractTableModel{
 
@@ -67,9 +66,5 @@ public class UserTableModel extends AbstractTableModel{
 		this.users = users;
 		fireTableDataChanged();
 	}
-	
-	
-
-	
-	
+		
 }
