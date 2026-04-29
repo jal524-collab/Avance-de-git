@@ -19,25 +19,7 @@ import views.MainView;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		/*try {
-	        UIManager.setLookAndFeel(
-	            UIManager.getSystemLookAndFeelClassName()
-	        );
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }*/
-		
-		//FlatLightLaf.setup();
-		
-		/*
-		 * Estas línean cambian de forma global la fuente para labels, buttons y textfields
-		 * Si quitan el comentario verán la diferencia.
-		 */
-		
-		//UIManager.put("Label.font", AppFont.normal());
-		//UIManager.put("Button.font", AppFont.title());
-		//UIManager.put("TextField.font", AppFont.small());	
+			
 		
 		new HomeControl(new MainView());
 		//new LoginController(new LoginWindow().getLoginView());
