@@ -1,6 +1,5 @@
 package modelo;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +13,7 @@ public class UserModelo {
 	private String description;
 	private List<String> languages;
 	private String password;
+	private String imagePath;
 	
 	public UserModelo() {
 		
@@ -26,7 +26,7 @@ public class UserModelo {
 		languages = new ArrayList<>();
 	}
 	
-	public UserModelo(String name, String email, String country, char gender, String description, List<String> languages) {
+	public UserModelo(String name, String email, String country, char gender, String description, List<String> languages, String imagePath) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -34,6 +34,7 @@ public class UserModelo {
 		this.gender = gender;
 		this.description = description;
 		this.languages = languages;
+		this.imagePath = imagePath;
 	}
 
 	public String getName() {
@@ -88,6 +89,14 @@ public class UserModelo {
 		return password;
 	}
 	
+	public String getImagePath() {
+		return imagePath;
+	}
+	
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	
 	public String toString() {
 		return "Nombre: " + name +
 		           "\nEmail: " + email +
@@ -122,8 +131,8 @@ public class UserModelo {
 	    	languages = Arrays.asList(data[5].split("\\|"));
 	    }
 	    
-	    return new UserModelo(name, email, country, gender, description, languages);
+	    return new UserModelo(name, email, country, gender, description, languages, null);
 		
-	}	
+	}
 	
 }

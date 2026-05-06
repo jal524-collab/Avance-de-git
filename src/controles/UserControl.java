@@ -1,5 +1,7 @@
 package controles;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import modelo.UserModelo;
 import repositorio.UserRepositorio;
+import servicio.PDFExportador;
 import tableModel.UserTableModel;
 import views.UserFormDialog;
 import views.UserView;
@@ -16,10 +19,12 @@ public class UserControl {
 	private UserView view;
 	private UserRepositorio repo;
 	private UserTableModel model;
+	private PDFExportador pdfExporter;
 	
 	public UserControl(UserView view) {
 		this.view = view;
 		repo = new UserRepositorio();
+		pdfExporter = new PDFExportador();
 		
 		this.view.getBtnAdd().addActionListener(e -> {
 			openForm(null);
@@ -34,6 +39,8 @@ public class UserControl {
 			
 			openForm(model.getUserAt(row));
 		});
+		
+		this.view.getBtnPdf().addActionListener(e -> generatePdf());
 	}
 	
 	public void loadUsers() {	
@@ -79,5 +86,25 @@ public class UserControl {
 		
 	}
 	
+	public void generatePdf() {
+		
+		File file = view.selectPdfFile();
+		
+		if(file == null) {
+			return;
+		}
+		
+		try {
+			pdfExporter.exportUsers(repo.getUsers(), file);
+			if(Desktop.isDesktopSupported()) {
+				Desktop.getDesktop().open(file);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(view, "Error al exportar");
+		}
+		
+		
+	}
 	
 }

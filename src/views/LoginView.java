@@ -1,4 +1,5 @@
 package views;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -212,10 +213,15 @@ public class LoginView extends JPanel {
 		c.setForeground(Color.BLACK);
 	}
 
-	
+	/*
+	 * En el ejemplo anterior la imagen se cargaba dentro del paintComponent, esto
+	 * es una mala prática ya que cada que sea actualiza la ventana se vuelve a
+	 * cargar la imagen. Es mejor tenerla como atributo y que se cargue una sola vez
+	 * en el constructor.
+	 */
 	private void loadImage() {
 		try {
-			backgroundImage = ImageIO.read(new File("src/img/fondo.jpg"));
+			backgroundImage = ImageIO.read(new File("src/assets/img/fondo.jpg"));
 		} catch (IOException ex) {
 			System.out.println("La imagen no existe");
 		}
@@ -242,6 +248,5 @@ public class LoginView extends JPanel {
 		g2.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), null);
 
 	}
-
 
 }
