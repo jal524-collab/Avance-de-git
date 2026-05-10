@@ -14,7 +14,7 @@ public class UserTableModel extends AbstractTableModel{
 		"Email",
 		"País",
 		"Género",
-		"Lenguajes"
+		"Productos"
 	};
 	
 	public UserTableModel(List<UserModelo> users) {
@@ -51,7 +51,7 @@ public class UserTableModel extends AbstractTableModel{
 		case 3:
 			return user.getGender();
 		case 4:
-			return String.join(", ", user.getLanguages());
+			return String.join(", ", user.getProductos());
 		}
 		
 		return null;

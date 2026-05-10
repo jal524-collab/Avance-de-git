@@ -37,7 +37,7 @@ public class UserFormDialog extends JDialog{
     private JRadioButton rbtnFemale;
     private ButtonGroup genderGroup;
 
-    private JList<String> lstLanguages;
+    private JList<String> lstProductos;
 
     private JButton btnSave;
     private JButton btnCancel;
@@ -116,7 +116,8 @@ public class UserFormDialog extends JDialog{
 
 		txtDescription = new JTextArea(4, 20);
 
-		lstLanguages = new JList<>(new String[] { "Java", "C++", "Python", "JavaScript" });
+		lstProductos = new JList<>(new String[] { "Electronica", "Muebles",
+												"Juguetes", "Ropa" });
 
 		panel.add(createField("Nombre:", txtName));
 		panel.add(createField("Email:", txtEmail));
@@ -129,7 +130,7 @@ public class UserFormDialog extends JDialog{
 		panel.add(createField("Género:", genderPanel));
 
 		panel.add(createField("Descripción:", new JScrollPane(txtDescription)));
-		panel.add(createField("Lenguajes:", new JScrollPane(lstLanguages)));
+		panel.add(createField("Productos:", new JScrollPane(lstProductos)));
 		
 		return scroll;
     }
@@ -166,19 +167,19 @@ public class UserFormDialog extends JDialog{
 
             txtDescription.setText(user.getDescription());
 
-            List<String> langs = user.getLanguages();
+            List<String> langs = user.getProductos();
 
             int[] indices = new int[langs.size()];
             int i = 0;
 
             for (String lang : langs) {
-                if (lang.equals("Java")) indices[i++] = 0;
-                else if (lang.equals("C++")) indices[i++] = 1;
-                else if (lang.equals("Python")) indices[i++] = 2;
-                else if (lang.equals("JavaScript")) indices[i++] = 3;
+                if (lang.equals("Electronica")) indices[i++] = 0;
+                else if (lang.equals("Muebles")) indices[i++] = 1;
+                else if (lang.equals("Juguetes")) indices[i++] = 2;
+                else if (lang.equals("Ropa")) indices[i++] = 3;
             }
 
-            lstLanguages.setSelectedIndices(indices);
+            lstProductos.setSelectedIndices(indices);
     	}
     }
     
@@ -191,23 +192,23 @@ public class UserFormDialog extends JDialog{
 
         String description = txtDescription.getText();
 
-        List<String> languages = new ArrayList<>();
+        List<String> productos = new ArrayList<>();
 
-        List<String> selected = lstLanguages.getSelectedValuesList();
+        List<String> selected = lstProductos.getSelectedValuesList();
 
         for (String lang : selected) {
-            languages.add(lang);
+        	productos.add(lang);
         }
         
         if(user == null) {
-        	user = new UserModelo(name, email, country, gender, description, languages, null);
+        	user = new UserModelo(name, email, country, gender, description, productos, null);
         }else {
         	user.setName(name);
         	user.setEmail(email);
         	user.setCountry(country);
             user.setGender(gender);
             user.setDescription(description);
-            user.setLanguages(languages);
+            user.setProductos(productos);
         }
         
         saved = true;

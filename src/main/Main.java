@@ -21,9 +21,9 @@ public class Main {
 	public static void main(String[] args) {
 			
 		
-		new HomeControl(new MainView());
-		//new LoginController(new LoginWindow().getLoginView());
-		//new RegistrationController(new RegistrationWindow());
+		//new HomeControl(new MainView());
+		new LoginControlador(new LoginWindow().getLoginView());
+		//new RegistroControl(new FormularioRegistro());
 		//showOnScreen(1, ventanita);
 	}
 	

@@ -4,36 +4,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itextpdf.io.exceptions.IOException;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserModelo {
-	
-	private String name;
+    private String name;
+    private List<String> productos;
 	private String email;
 	private String country;
 	private char gender;
 	private String description;
-	private List<String> languages;
+	
 	private String password;
 	private String imagePath;
 	
 	public UserModelo() {
 		
-		languages = new ArrayList<>();
+		productos = new ArrayList<>();
 	}
 	
 	public UserModelo(String email, String password) {
 		this.email = email;
 		this.password = password;
-		languages = new ArrayList<>();
+		productos = new ArrayList<>();
 	}
 	
-	public UserModelo(String name, String email, String country, char gender, String description, List<String> languages, String imagePath) {
+	public UserModelo(String name, String email, String country, char gender, 
+						String description, List<String> productos, String imagePath) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.country = country;
 		this.gender = gender;
 		this.description = description;
-		this.languages = languages;
+		this.productos = productos;
 		this.imagePath = imagePath;
 	}
 
@@ -77,12 +85,12 @@ public class UserModelo {
 		this.description = description;
 	}
 
-	public List<String> getLanguages() {
-		return languages;
+	public List<String> getProductos() {
+		return productos;
 	}
 
-	public void setLanguages(List<String> languages) {
-		this.languages = languages;
+	public void setProductos(List<String> productos) {
+		this.productos = productos;
 	}
 	
 	public String getPassword() {
@@ -103,8 +111,8 @@ public class UserModelo {
 		           "\nPaís: " + country +
 		           "\nGénero: " + gender +
 		           "\nDescripción: " + description +
-		           "\nLenguajes:\n" +
-		           String.join("\n", languages);
+		           "\nProductos:\n" +
+		           String.join("\n", productos);
 	}
 	
 	public String toCsv() {
@@ -113,7 +121,7 @@ public class UserModelo {
 		           country + "," +
 		           gender + "," +
 		           description + "," +
-		           String.join("|", languages);
+		           String.join("|", productos);
 	}
 	
 	public static UserModelo fromCsv(String userData) {
@@ -134,5 +142,6 @@ public class UserModelo {
 	    return new UserModelo(name, email, country, gender, description, languages, null);
 		
 	}
+	
 	
 }

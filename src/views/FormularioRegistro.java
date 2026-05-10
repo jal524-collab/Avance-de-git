@@ -74,7 +74,7 @@ public class FormularioRegistro extends JFrame {
 
 	public FormularioRegistro() {
 
-		setTitle("Formulario de Registro");
+		setTitle("Registro de Vendedor");
 		setSize(400, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,30 +145,40 @@ public class FormularioRegistro extends JFrame {
 	private JPanel createTitlePanel() {
 		JPanel panel = new JPanel();
 
-		JLabel title = new JLabel("Formulario de Registro");
+		JLabel title = new JLabel("Registro de Vendedor");
 		title.setFont(AppFont.title());
 
 		panel.add(title);
 
 		return panel;
 	}
+	
 
 	private JScrollPane createFormPanel() {
 
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
+		
+		FondoRegistro panel = new FondoRegistro("/assets/img/formulario.jpg");
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+	    panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
+	    
+	    System.out.println(getClass().getResource("/img/formulario.jpg"));
 
-		JScrollPane scroll = new JScrollPane(panel);
-		scroll.setBorder(null);
-		scroll.setHorizontalScrollBar(null);
-		scroll.getVerticalScrollBar().setUnitIncrement(14);
+	    JScrollPane scroll = new JScrollPane(panel);
+	    scroll.setOpaque(false);
+	    scroll.getViewport().setOpaque(false);
+	    scroll.setBorder(null);
+	    scroll.setHorizontalScrollBar(null);
+	    scroll.getVerticalScrollBar().setUnitIncrement(14);
 
+	    
+	    
+	 
 		txtName = new JTextField();
 
 		txtEmail = new JTextField();
 
-		cboCountry = new JComboBox<>(new String[] { "Seleccione", "México", "USA", "Canada" });
+		cboCountry = new JComboBox<>(new String[] { "Seleccione", "México", "USA", 
+													"Canada", "Venezuela", "Japon" });
 
 		rbtnMale = new JRadioButton("Masculino");
 		rbtnMale.setActionCommand("M");
@@ -184,7 +194,8 @@ public class FormularioRegistro extends JFrame {
 
 		txtDescription = new JTextArea(4, 20);
 
-		lstLanguages = new JList<>(new String[] { "Java", "C++", "Python", "JavaScript" });
+		lstLanguages = new JList<>(new String[] { "Electronica", "Muebles",
+												  "Juguetes", "Ropa" });
 
 		lblErrorName = new Errorlbl();
 		lblErrorEmail = createErrorLabel();
@@ -204,8 +215,11 @@ public class FormularioRegistro extends JFrame {
 
 		panel.add(createField("Género:", genderPanel, lblErrorGender));
 
-		panel.add(createField("Descripción:", new JScrollPane(txtDescription), lblErrorDescription));
-		panel.add(createField("Lenguajes:", new JScrollPane(lstLanguages), lblErrorList));
+		panel.add(createField("Descripción:", 
+						new JScrollPane(txtDescription), lblErrorDescription));
+		
+		panel.add(createField("Articulos:", 
+						new JScrollPane(lstLanguages), lblErrorList));
 
 		btnSelectImage = new JButton("Seleccionar imagen");
 
@@ -234,6 +248,8 @@ public class FormularioRegistro extends JFrame {
 		termsPanel.add(chkTerms);
 
 		panel.add(createField("", termsPanel, lblErrorTerms));
+		
+		panel.add(createField("Nombre:", txtName, lblErrorName));
 
 		return scroll;
 	}
@@ -259,7 +275,8 @@ public class FormularioRegistro extends JFrame {
 		panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JLabel label = new JLabel(labelText);
-		label.setMaximumSize(new Dimension(Integer.MAX_VALUE, label.getPreferredSize().height));
+		label.setMaximumSize(new Dimension(Integer.MAX_VALUE, 
+											label.getPreferredSize().height));
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -277,19 +294,22 @@ public class FormularioRegistro extends JFrame {
 		label.setFont(AppFont.small());
 		label.setForeground(Color.RED);
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setMaximumSize(new Dimension(Integer.MAX_VALUE, label.getPreferredSize().height));
+		label.setMaximumSize(new Dimension(Integer.MAX_VALUE, 
+							label.getPreferredSize().height));
 
 		return label;
 	}
 	
 	public void chooseImage() {
 		
-		String lastDirectory = Config.get("registration.image.last.directory", System.getProperty("user.home"));
+		String lastDirectory = Config.get("registration.image.last.directory", 
+											System.getProperty("user.home"));
 		
 		JFileChooser chooser = new JFileChooser(lastDirectory);
 		chooser.setDialogTitle("Seleccionar imagen");
 		
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes",
+																"jpg", "jpeg", "png");
 		chooser.setFileFilter(filter);
 		
 		int option = chooser.showOpenDialog(this);

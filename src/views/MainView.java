@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,6 +38,14 @@ public class MainView extends JFrame {
 		setTitle("Mi aplicación");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		try {
+	        
+	        ImageIcon icono = new ImageIcon(getClass().getResource("/assets/img/icono.png"));
+	        setIconImage(icono.getImage());
+	    } catch (Exception e) {
+	        System.out.println("No se pudo cargar el icono: " + e.getMessage());
+	    }
 
 		setMenu();
 		
@@ -50,7 +59,7 @@ public class MainView extends JFrame {
 		JPanel navbar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
 		btnHome = new JButton("Inicio");
-		btnUsers = new JButton("Usuarios");
+		btnUsers = new JButton("Empleados");
 		
 		navbar.add(btnHome);
 		navbar.add(btnUsers);
@@ -62,8 +71,10 @@ public class MainView extends JFrame {
 		cardLayout = new CardLayout();
 		container = new JPanel(cardLayout);
 		
-		JPanel homePanel = new JPanel();
-		homePanel.add(new JLabel("Bienvenido al Sistema"));
+		FondoPanel homePanel = new FondoPanel("/assets/img/background.jpg");
+	    homePanel.setLayout(new FlowLayout()); 
+		
+		homePanel.add(new JLabel("Bienvenido al Sistema de Amazon Gerente"));
 		
 		usersPanel = new UserView();
 		
@@ -139,7 +150,7 @@ public class MainView extends JFrame {
 		setLocation(x, y);
 	}
 
-	// Este método no se usa en el proyecto, pero queda de ejemplo para listeners de ventana, mouse, etc
+	
 	private void ejemplo() {
 		addWindowListener(new WindowListener() {
 

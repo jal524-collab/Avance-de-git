@@ -103,43 +103,46 @@ public class LoginView extends JPanel {
 		add(panelLogo, BorderLayout.NORTH);
 	}
 
-	private void createForm() {
-		JPanel formPanel = new JPanel();
-		formPanel.setOpaque(false);
-		formPanel.setLayout(new SpringLayout());
-		formPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 10, 20));
+		private void createForm() {
+		    JPanel formPanel = new JPanel();
+		    formPanel.setOpaque(false);
+		    formPanel.setLayout(new SpringLayout());
+		    formPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 10, 20));
 
-		JLabel lblEmail = new JLabel("Email: ");
-		lblEmail.setFont(font);
-		lblEmail.setMaximumSize(new Dimension(150, lblEmail.getPreferredSize().height));
-		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		formPanel.add(lblEmail);
+		    // --- ETIQUETA EMAIL ---
+		    JLabel lblEmail = new JLabel(" Email: "); 
+		    lblEmail.setFont(font);
+		    lblEmail.setOpaque(true);               
+		    lblEmail.setBackground(Color.WHITE);   
+		    lblEmail.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2)); 
+		    lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+		    formPanel.add(lblEmail);
 
-		emailField = new JTextField();
-		new TextPromt("Ingresa tu usuario", emailField);
-		emailField.setFont(font);
-		emailField.setMaximumSize(new Dimension(Integer.MAX_VALUE, emailField.getPreferredSize().height));
-		formPanel.add(emailField);
+		    emailField = new JTextField();
+		    new TextPromt("Ingresa tu usuario", emailField);
+		    emailField.setFont(font);
+		    formPanel.add(emailField);
 
-		formPanel.add(new JLabel());
+		    formPanel.add(new JLabel());
 
-		lblEmailRequired = new JLabel("El email es requerido.");
+		    lblEmailRequired = new JLabel("El email es requerido.");
 		lblEmailRequired.setFont(new Font("Arial", Font.BOLD, 10));
 		lblEmailRequired.setForeground(Color.RED);
 		lblEmailRequired.setVisible(false);
 		formPanel.add(lblEmailRequired);
 
-		JLabel lblPasswordLabel = new JLabel("Contraseña: ");
-		lblPasswordLabel.setFont(font);
-		lblPasswordLabel.setMaximumSize(new Dimension(150, lblPasswordLabel.getPreferredSize().height));
-		formPanel.add(lblPasswordLabel);
+		// --- ETIQUETA CONTRASEÑA ---
+	    JLabel lblPasswordLabel = new JLabel(" Contraseña: "); 
+	    lblPasswordLabel.setFont(font);
+	    lblPasswordLabel.setOpaque(true);              
+	    lblPasswordLabel.setBackground(Color.WHITE); 
+	    lblPasswordLabel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+	    formPanel.add(lblPasswordLabel);
 
-		passwordField = new JPasswordField();
-		new TextPromt("Ingresa tu contraseña", passwordField);
-		passwordField.setFont(font);
-		passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, passwordField.getPreferredSize().height));
-		formPanel.add(passwordField);
-
+	    passwordField = new JPasswordField();
+	    new TextPromt("Ingresa tu contraseña", passwordField);
+	    passwordField.setFont(font);
+	    formPanel.add(passwordField);
 		formPanel.add(new JLabel());
 
 		lblPasswordRequired = new JLabel("");
