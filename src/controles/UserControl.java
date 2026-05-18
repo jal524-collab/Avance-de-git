@@ -14,7 +14,7 @@ import tableModel.UserTableModel;
 import views.UserFormDialog;
 import views.UserView;
 
-public class UserControl {
+public class UserControl{
 
 	private UserView view;
 	private UserRepositorio repo;
@@ -41,10 +41,18 @@ public class UserControl {
 		});
 		
 		this.view.getBtnPdf().addActionListener(e -> generatePdf());
+		
+		this.view.getBtnDelete().addActionListener(e -> {
+			boolean deleted = repo.delete(model.getUserAt(view.getSelectedRow()).getId());
+			if(deleted) {
+				
+				model.removeRow(view.getSelectedRow());
+			}
+				
+		});
 	}
 	
 	public void loadUsers() {	
-		System.out.println("Carga usuarios");
 		try {
 			List<UserModelo> users = repo.getUsers();
 			
@@ -69,14 +77,20 @@ public class UserControl {
 			UserModelo savedUser = dialog.getUser();
 			
 			try {
+				
 				if(user == null) {
 					repo.save(savedUser);
+					model.addRow(savedUser); 
 				}else {
+					
 					int row = view.getSelectedRow();
-					repo.update(row, savedUser);
+					boolean updated = repo.update(row, savedUser);
+					if(updated) {
+						model.updateRow(row, savedUser); 
+					}
 				}
 				
-				loadUsers();
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(view, e.getMessage());

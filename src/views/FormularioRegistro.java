@@ -35,8 +35,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import config.Config;
 import utils.AppFont;
-import utils.Config;
 import views.componentes.Errorlbl;
 
 public class FormularioRegistro extends JFrame {
@@ -56,7 +56,7 @@ public class FormularioRegistro extends JFrame {
 
 	private JCheckBox chkTerms;
 
-	private JList<String> lstLanguages;
+	private JList<String> lstProductos;
 
 	private Errorlbl lblErrorName;
 	private JLabel lblErrorEmail;
@@ -194,7 +194,7 @@ public class FormularioRegistro extends JFrame {
 
 		txtDescription = new JTextArea(4, 20);
 
-		lstLanguages = new JList<>(new String[] { "Electronica", "Muebles",
+		lstProductos = new JList<>(new String[] { "Electronica", "Muebles",
 												  "Juguetes", "Ropa" });
 
 		lblErrorName = new Errorlbl();
@@ -219,7 +219,7 @@ public class FormularioRegistro extends JFrame {
 						new JScrollPane(txtDescription), lblErrorDescription));
 		
 		panel.add(createField("Articulos:", 
-						new JScrollPane(lstLanguages), lblErrorList));
+						new JScrollPane(lstProductos), lblErrorList));
 
 		btnSelectImage = new JButton("Seleccionar imagen");
 
@@ -360,8 +360,8 @@ public class FormularioRegistro extends JFrame {
 		return chkTerms;
 	}
 
-	public JList<String> getLstLanguages() {
-		return lstLanguages;
+	public JList<String> getLstProductos() {
+		return lstProductos;
 	}
 
 	public String getUserName() {
@@ -384,8 +384,8 @@ public class FormularioRegistro extends JFrame {
 		return txtDescription.getText();
 	}
 
-	public List<String> getLanguages() {
-		return lstLanguages.getSelectedValuesList();
+	public List<String> getProductos() {
+		return lstProductos.getSelectedValuesList();
 	}
 
 	public int getCountryIndex() {
@@ -447,4 +447,5 @@ public class FormularioRegistro extends JFrame {
 		lblErrorImage.setText(m);
 	}
 
+	
 }

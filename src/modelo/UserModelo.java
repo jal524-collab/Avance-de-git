@@ -4,45 +4,76 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itextpdf.io.exceptions.IOException;
-
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserModelo {
-    private String name;
-    private List<String> productos;
+	
+	private int id;
+	private String name;
 	private String email;
 	private String country;
 	private char gender;
 	private String description;
-	
+	private List<String> Producto;
 	private String password;
 	private String imagePath;
+	private String role;
 	
 	public UserModelo() {
 		
-		productos = new ArrayList<>();
+		Producto = new ArrayList<>();
+	}
+	
+	public UserModelo(int id, String email, String password) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		Producto = new ArrayList<>();
 	}
 	
 	public UserModelo(String email, String password) {
 		this.email = email;
 		this.password = password;
-		productos = new ArrayList<>();
+		Producto = new ArrayList<>();
 	}
 	
 	public UserModelo(String name, String email, String country, char gender, 
-						String description, List<String> productos, String imagePath) {
-		super();
+				String description, List<String> Producto, String imagePath, String role) {
 		this.name = name;
 		this.email = email;
 		this.country = country;
 		this.gender = gender;
 		this.description = description;
-		this.productos = productos;
+		this.Producto = Producto;
 		this.imagePath = imagePath;
+		this.role = role;
+	}
+	
+	public UserModelo(int id, String name, String email, String country, char gender, 
+			String description, List<String> Producto, String imagePath, String role) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.country = country;
+		this.gender = gender;
+		this.description = description;
+		this.Producto = Producto;
+		this.imagePath = imagePath;
+		this.role = role;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getName() {
@@ -86,11 +117,11 @@ public class UserModelo {
 	}
 
 	public List<String> getProductos() {
-		return productos;
+		return Producto;
 	}
 
-	public void setProductos(List<String> productos) {
-		this.productos = productos;
+	public void setProductos(List<String> producto) {
+		this.Producto = Producto;
 	}
 	
 	public String getPassword() {
@@ -112,36 +143,7 @@ public class UserModelo {
 		           "\nGénero: " + gender +
 		           "\nDescripción: " + description +
 		           "\nProductos:\n" +
-		           String.join("\n", productos);
+		           String.join("\n", Producto);
 	}
-	
-	public String toCsv() {
-		return name + "," +
-		           email + "," +
-		           country + "," +
-		           gender + "," +
-		           description + "," +
-		           String.join("|", productos);
-	}
-	
-	public static UserModelo fromCsv(String userData) {
-		String data[] = userData.split(",");
-		
-		String name = data[0];
-		String email = data[1];
-	    String country = data[2];
-	    char gender = data[3].charAt(0);
-	    String description = data[4];
-	    
-	    List<String> languages = new ArrayList<String>();
-	    
-	    if(data.length > 5) {
-	    	languages = Arrays.asList(data[5].split("\\|"));
-	    }
-	    
-	    return new UserModelo(name, email, country, gender, description, languages, null);
-		
-	}
-	
-	
 }
+	

@@ -18,9 +18,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import config.Config;
 import tableModel.UserTableModel;
 import utils.AppFont;
-import utils.Config;
 
 public class UserView extends JPanel{
 

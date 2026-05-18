@@ -26,7 +26,6 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
-import lib.SpringUtilities;
 import views.componentes.TextPromt;
 
 public class LoginView extends JPanel {
@@ -126,7 +125,7 @@ public class LoginView extends JPanel {
 		    formPanel.add(new JLabel());
 
 		    lblEmailRequired = new JLabel("El email es requerido.");
-		lblEmailRequired.setFont(new Font("Arial", Font.BOLD, 10));
+		lblEmailRequired.setFont(new Font("Arial", Font.BOLD, 20));
 		lblEmailRequired.setForeground(Color.RED);
 		lblEmailRequired.setVisible(false);
 		formPanel.add(lblEmailRequired);
@@ -146,11 +145,9 @@ public class LoginView extends JPanel {
 		formPanel.add(new JLabel());
 
 		lblPasswordRequired = new JLabel("");
-		lblPasswordRequired.setFont(new Font("Arial", Font.BOLD, 10));
+		lblPasswordRequired.setFont(new Font("Arial", Font.BOLD, 15));
 		lblPasswordRequired.setForeground(Color.RED);
 		formPanel.add(lblPasswordRequired);
-
-		SpringUtilities.makeCompactGrid(formPanel, 4, 2, 0, 0, 10, 10);
 
 		add(formPanel);
 

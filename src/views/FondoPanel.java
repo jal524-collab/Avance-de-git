@@ -14,7 +14,7 @@ public class FondoPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // Dibuja la imagen escalada al tamaño actual del panel
+        
         g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
     }
 }

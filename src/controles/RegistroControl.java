@@ -47,8 +47,9 @@ public class RegistroControl {
                         view.getCountry(),
                         view.getGender(),
                         view.getDescription(),
-                        view.getLanguages(),
-                        imagePathString
+                        view.getProductos(),
+                        imagePathString,
+                        "ADMIN"
                 );
                 
                 registerUser(user);
@@ -132,7 +133,7 @@ public class RegistroControl {
 
         view.getChkTerms().addActionListener(e -> validateTerms());
 
-        view.getLstLanguages().addListSelectionListener(e -> validateLanguages());
+        view.getLstProductos().addListSelectionListener(e -> validateProductos());
         
         view.getBtnSelectImage().addActionListener(e -> view.chooseImage());
 
@@ -196,7 +197,7 @@ public class RegistroControl {
         if(!validateGender()) valid=false;
         if(!validateTerms()) valid=false;
         if(!validateDescription()) valid=false;
-        if(!validateLanguages()) valid=false;
+        if(!validateProductos()) valid=false;
         if(!validateImage()) valid = false;
 
         return valid;
@@ -278,9 +279,9 @@ public class RegistroControl {
         return true;
     }
 
-    private boolean validateLanguages(){
+    private boolean validateProductos(){
 
-        if(view.getLanguages().isEmpty()){
+        if(view.getProductos().isEmpty()){
             view.setErrorList("Seleccione al menos un lenguaje");
             return false;
         }

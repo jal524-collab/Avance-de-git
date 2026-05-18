@@ -201,7 +201,7 @@ public class UserFormDialog extends JDialog{
         }
         
         if(user == null) {
-        	user = new UserModelo(name, email, country, gender, description, productos, null);
+        	user = new UserModelo(name, email, country, gender, description, productos, null, "ADMIN");
         }else {
         	user.setName(name);
         	user.setEmail(email);
