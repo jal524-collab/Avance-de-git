@@ -24,6 +24,7 @@ public class UserRepositorio {
 	public List<UserModelo> getUsers() throws IOException {
 		
 		List<UserModelo> users = new ArrayList<UserModelo>();
+		System.out.println("lista");
 		
 		try(
 			Connection connection = DataBaseConnection.getConnection();
@@ -32,7 +33,7 @@ public class UserRepositorio {
 		) {
 			
 			while(rs.next()) {
-				
+				System.out.println(rs.getString("name"));
 				UserModelo user = new UserModelo(
 					rs.getInt("id"), 
 					rs.getString("name"), 
@@ -40,7 +41,7 @@ public class UserRepositorio {
 					rs.getString("country"),
 					rs.getString("gender").charAt(0),
 					rs.getString("description"),
-					Arrays.asList(rs.getString("languages").split("\\|")),
+					Arrays.asList(rs.getString("producto").split("\\|")),
 					rs.getString("image_path"),
 					rs.getString("role")
 				);
@@ -76,6 +77,8 @@ public class UserRepositorio {
 		
 	}
 	
+	
+	
 	/*
 	 * Cambié para que retorne si se pudo actualizar o no
 	 */
@@ -85,7 +88,7 @@ public class UserRepositorio {
 		//users.set(index, updatedUser);
 		
 		String sql = "UPDATE users SET name = ?, email = ?, country = ?,"
-				+ " description = ?, languages = ?, gender = ?, role = ? "
+				+ " description = ?, productos = ?, gender = ?, role = ? "
 				+ "WHERE id = ?";
 		
 		try (Connection connection = DataBaseConnection.getConnection();

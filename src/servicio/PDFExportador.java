@@ -48,7 +48,7 @@ public class PDFExportador {
 				doc.add(img);
 			}
 
-			doc.add(new Paragraph("Reporte de Usuarios").setBold().setFontSize(12)
+			doc.add(new Paragraph("Reporte de Empleado").setBold().setFontSize(12)
 					.setTextAlignment(TextAlignment.CENTER));
 
 			doc.add(new Paragraph("").setMarginTop(30));
@@ -59,7 +59,7 @@ public class PDFExportador {
 
 			PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
-			Cell cell = new Cell(1, 5).add(new Paragraph("Usuarios del sistema")).setFont(font).setFontSize(14)
+			Cell cell = new Cell(1, 5).add(new Paragraph("Empleados del sistema")).setFont(font).setFontSize(14)
 					.setFontColor(DeviceGray.WHITE).setBackgroundColor(new DeviceRgb(45, 111, 164))
 					.setTextAlignment(TextAlignment.CENTER);
 

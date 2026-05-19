@@ -17,7 +17,9 @@ public class DataBaseConnection {
 			if(connection == null || connection.isClosed()) {
 				Properties props = new Properties();
 				
-				InputStream input = DataBaseConnection.class.getClassLoader().getResourceAsStream("config/database.properties");
+				InputStream input = DataBaseConnection.class.getClassLoader(
+						).getResourceAsStream("config/dataBase.propertie");
+				
 				props.load(input);
 				
 				String url = props.getProperty("db.url");
