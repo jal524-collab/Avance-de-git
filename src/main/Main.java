@@ -21,8 +21,8 @@ public class Main {
 	public static void main(String[] args) {
 			
 		
-		new HomeControl(new MainView());
-		//new LoginControlador(new LoginWindow().getLoginView());
+		//new HomeControl(new MainView());
+		new LoginControlador(new LoginWindow().getLoginView());
 		//new RegistroControl(new FormularioRegistro());
 	}
 	

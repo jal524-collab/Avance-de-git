@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
+import utils.SpringUtilities;
 import views.componentes.TextPromt;
 
 public class LoginView extends JPanel {
@@ -49,7 +50,7 @@ public class LoginView extends JPanel {
 		loadImage();
 		initializeComponents();
 	}
-	
+
 	public void showEmailError(String message) {
 		lblEmailRequired.setText(message);
 		lblEmailRequired.setVisible(true);
@@ -63,7 +64,7 @@ public class LoginView extends JPanel {
 		lblEmailRequired.setText("");
 		lblPasswordRequired.setText("");
 	}
-	
+
 	public String getEmail() {
 		return emailField.getText();
 	}
@@ -91,10 +92,10 @@ public class LoginView extends JPanel {
 	public JLabel getLblRegister() {
 		return lblRegister;
 	}
-	
+
 	private void createLogo() {
 		JPanel panelLogo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		panelLogo.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+		panelLogo.setBorder(BorderFactory.createEmptyBorder(100, 0, 0, 0));
 		panelLogo.setOpaque(false);
 		JLabel lblLogo = new JLabel();
 		lblLogo.setIcon(loadIcon("../assets/img/icono.png", 100, 100));
@@ -102,52 +103,63 @@ public class LoginView extends JPanel {
 		add(panelLogo, BorderLayout.NORTH);
 	}
 
-		private void createForm() {
-		    JPanel formPanel = new JPanel();
-		    formPanel.setOpaque(false);
-		    formPanel.setLayout(new SpringLayout());
-		    formPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 10, 20));
+	private void createForm() {
 
-		    // --- ETIQUETA EMAIL ---
-		    JLabel lblEmail = new JLabel(" Email: "); 
-		    lblEmail.setFont(font);
-		    lblEmail.setOpaque(true);               
-		    lblEmail.setBackground(Color.WHITE);   
-		    lblEmail.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2)); 
-		    lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		    formPanel.add(lblEmail);
+		JPanel formPanel = new JPanel();
+		formPanel.setOpaque(false);
+		formPanel.setLayout(new SpringLayout());
+		formPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 10, 20));
 
-		    emailField = new JTextField();
-		    new TextPromt("Ingresa tu usuario", emailField);
-		    emailField.setFont(font);
-		    formPanel.add(emailField);
+		//==EMAIL==
+		
+		JLabel lblEmail = new JLabel("Email: ");
+		lblEmail.setFont(font);
+		lblEmail.setOpaque(true); 
+		lblEmail.setMaximumSize(new Dimension(100, lblEmail.getPreferredSize().height));
+		lblEmail.setBackground(Color.WHITE); 
+	    lblEmail.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2)); 
+		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+		formPanel.add(lblEmail);
 
-		    formPanel.add(new JLabel());
+		emailField = new JTextField();
+		new TextPromt("Ingresa tu usuario", emailField);
+		emailField.setFont(font);
+		emailField.setMaximumSize(new Dimension(Integer.MAX_VALUE, emailField.getPreferredSize().height));
+		formPanel.add(emailField);
 
-		    lblEmailRequired = new JLabel("El email es requerido.");
-		lblEmailRequired.setFont(new Font("Arial", Font.BOLD, 20));
+		formPanel.add(new JLabel());
+
+		lblEmailRequired = new JLabel("El email es requerido.");
+		lblEmailRequired.setFont(new Font("Arial", Font.BOLD, 10));
 		lblEmailRequired.setForeground(Color.RED);
 		lblEmailRequired.setVisible(false);
 		formPanel.add(lblEmailRequired);
 
-		// --- ETIQUETA CONTRASEÑA ---
-	    JLabel lblPasswordLabel = new JLabel(" Contraseña: "); 
-	    lblPasswordLabel.setFont(font);
-	    lblPasswordLabel.setOpaque(true);              
-	    lblPasswordLabel.setBackground(Color.WHITE); 
-	    lblPasswordLabel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-	    formPanel.add(lblPasswordLabel);
+		
+		//==CONTASENIA==
+		JLabel lblPasswordLabel = new JLabel("Contraseña: ");
+		lblPasswordLabel.setFont(font);
+		lblPasswordLabel.setOpaque(true);
+		lblPasswordLabel.setBackground(Color.WHITE);
+		lblPasswordLabel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2)); 
+		lblPasswordLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPasswordLabel.setMaximumSize(new Dimension(100, lblPasswordLabel.getPreferredSize().height));
+		formPanel.add(lblPasswordLabel);
 
-	    passwordField = new JPasswordField();
-	    new TextPromt("Ingresa tu contraseña", passwordField);
-	    passwordField.setFont(font);
-	    formPanel.add(passwordField);
+		passwordField = new JPasswordField();
+		new TextPromt("Ingresa tu contraseña", passwordField);
+		passwordField.setFont(font);
+		passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, passwordField.getPreferredSize().height));
+		formPanel.add(passwordField);
+
 		formPanel.add(new JLabel());
 
 		lblPasswordRequired = new JLabel("");
-		lblPasswordRequired.setFont(new Font("Arial", Font.BOLD, 15));
+		lblPasswordRequired.setFont(new Font("Arial", Font.BOLD, 10));
 		lblPasswordRequired.setForeground(Color.RED);
 		formPanel.add(lblPasswordRequired);
+
+		SpringUtilities.makeCompactGrid(formPanel, 4, 2, 0, 0, 10, 10);
 
 		add(formPanel);
 
@@ -196,7 +208,7 @@ public class LoginView extends JPanel {
 		add(buttonsPanel, BorderLayout.SOUTH);
 
 	}
-	
+
 	private void initializeComponents() {
 		createButtons();
 		createLogo();
@@ -213,12 +225,6 @@ public class LoginView extends JPanel {
 		c.setForeground(Color.BLACK);
 	}
 
-	/*
-	 * En el ejemplo anterior la imagen se cargaba dentro del paintComponent, esto
-	 * es una mala prática ya que cada que sea actualiza la ventana se vuelve a
-	 * cargar la imagen. Es mejor tenerla como atributo y que se cargue una sola vez
-	 * en el constructor.
-	 */
 	private void loadImage() {
 		try {
 			backgroundImage = ImageIO.read(new File("src/assets/img/fondo.jpg"));
@@ -226,7 +232,7 @@ public class LoginView extends JPanel {
 			System.out.println("La imagen no existe");
 		}
 	}
-	
+
 	private ImageIcon loadIcon(String path, int w, int h) {
 
 		try {

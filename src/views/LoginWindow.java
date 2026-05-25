@@ -14,7 +14,7 @@ public class LoginWindow extends JFrame {
 	
 	public LoginWindow() {
 		
-		setSize(400, 400);
+		setSize(600, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
 		setTitle("Mi Aplicación V2.0");
