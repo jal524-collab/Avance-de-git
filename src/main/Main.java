@@ -12,6 +12,7 @@ import controles.HomeControl;
 import controles.LoginControlador;
 import controles.RegistroControl;
 import utils.AppFont;
+import utils.PasswordUtils;
 import views.FormularioRegistro;
 import views.LoginWindow;
 import views.MainView;
@@ -20,7 +21,11 @@ public class Main {
 
 	public static void main(String[] args) {
 			
+		String pass = PasswordUtils.hashPassword("12345");
+		System.out.println(pass);
 		
+		String empleado = PasswordUtils.hashPassword("54321");
+		System.out.println(empleado);
 		//new HomeControl(new MainView());
 		new LoginControlador(new LoginWindow().getLoginView());
 		//new RegistroControl(new FormularioRegistro());

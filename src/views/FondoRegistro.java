@@ -15,7 +15,7 @@ class FondoRegistro extends JPanel {
         if (url != null) {
             this.imagen = new ImageIcon(url).getImage();
         } else {
-            System.err.println("No se pudo encontrar la imagen en: " + ruta);
+            System.out.println("No se pudo encontrar la imagen");
         }
         
         setOpaque(false);

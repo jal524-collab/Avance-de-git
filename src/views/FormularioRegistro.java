@@ -1,6 +1,5 @@
 package views;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -49,6 +48,7 @@ public class FormularioRegistro extends JFrame {
 	private JTextArea txtDescription;
 
 	private JComboBox<String> cboCountry;
+	private JComboBox<String> cboRole; 
 
 	private JRadioButton rbtnMale;
 	private JRadioButton rbtnFemale;
@@ -61,6 +61,7 @@ public class FormularioRegistro extends JFrame {
 	private Errorlbl lblErrorName;
 	private JLabel lblErrorEmail;
 	private JLabel lblErrorCombo;
+	private JLabel lblErrorRole; 
 	private JLabel lblErrorGender;
 	private JLabel lblErrorTerms;
 	private JLabel lblErrorList;
@@ -156,7 +157,6 @@ public class FormularioRegistro extends JFrame {
 
 	private JScrollPane createFormPanel() {
 
-		
 		FondoRegistro panel = new FondoRegistro("/assets/img/formulario.jpg");
 	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	    panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
@@ -170,15 +170,14 @@ public class FormularioRegistro extends JFrame {
 	    scroll.setHorizontalScrollBar(null);
 	    scroll.getVerticalScrollBar().setUnitIncrement(14);
 
-	    
-	    
-	 
 		txtName = new JTextField();
-
 		txtEmail = new JTextField();
 
 		cboCountry = new JComboBox<>(new String[] { "Seleccione", "México", "USA", 
 													"Canada", "Venezuela", "Japon" });
+		
+		
+		cboRole = new JComboBox<>(new String[] { "Seleccione", "VENDEDOR", "ADMIN" });
 
 		rbtnMale = new JRadioButton("Masculino");
 		rbtnMale.setActionCommand("M");
@@ -200,6 +199,7 @@ public class FormularioRegistro extends JFrame {
 		lblErrorName = new Errorlbl();
 		lblErrorEmail = createErrorLabel();
 		lblErrorCombo = createErrorLabel();
+		lblErrorRole = createErrorLabel(); 
 		lblErrorGender = createErrorLabel();
 		lblErrorTerms = createErrorLabel();
 		lblErrorList = createErrorLabel();
@@ -208,6 +208,7 @@ public class FormularioRegistro extends JFrame {
 		panel.add(createField("Nombre:", txtName, lblErrorName));
 		panel.add(createField("Email:", txtEmail, lblErrorEmail));
 		panel.add(createField("País:", cboCountry, lblErrorCombo));
+		panel.add(createField("Rol:", cboRole, lblErrorRole)); 
 
 		JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		genderPanel.add(rbtnMale);
@@ -248,8 +249,6 @@ public class FormularioRegistro extends JFrame {
 		termsPanel.add(chkTerms);
 
 		panel.add(createField("", termsPanel, lblErrorTerms));
-		
-		panel.add(createField("Nombre:", txtName, lblErrorName));
 
 		return scroll;
 	}
@@ -351,6 +350,11 @@ public class FormularioRegistro extends JFrame {
 	public JComboBox<String> getCboCountry() {
 		return cboCountry;
 	}
+	
+	
+	public JComboBox<String> getCboRole() {
+		return cboRole;
+	}
 
 	public ButtonGroup getGenderGroup() {
 		return genderGroup;
@@ -375,6 +379,11 @@ public class FormularioRegistro extends JFrame {
 	public String getCountry() {
 		return String.valueOf(cboCountry.getSelectedItem());
 	}
+	
+	
+	public String getRole() {
+		return String.valueOf(cboRole.getSelectedItem());
+	}
 
 	public char getGender() {
 		return genderGroup.getSelection().getActionCommand().charAt(0);
@@ -390,6 +399,11 @@ public class FormularioRegistro extends JFrame {
 
 	public int getCountryIndex() {
 		return cboCountry.getSelectedIndex();
+	}
+	
+	
+	public int getRoleIndex() {
+		return cboRole.getSelectedIndex();
 	}
 
 	public boolean isTermsAccepted() {
@@ -408,6 +422,7 @@ public class FormularioRegistro extends JFrame {
 		lblErrorName.setText("");
 		lblErrorEmail.setText("");
 		lblErrorCombo.setText("");
+		lblErrorRole.setText(""); 
 		lblErrorGender.setText("");
 		lblErrorTerms.setText("");
 		lblErrorList.setText("");
@@ -425,6 +440,11 @@ public class FormularioRegistro extends JFrame {
 
 	public void setErrorCombo(String m) {
 		lblErrorCombo.setText(m);
+	}
+	
+	
+	public void setErrorRole(String m) {
+		lblErrorRole.setText(m);
 	}
 
 	public void setErrorGender(String m) {
@@ -446,6 +466,4 @@ public class FormularioRegistro extends JFrame {
 	public void setErrorImage(String m) {
 		lblErrorImage.setText(m);
 	}
-
-	
 }

@@ -207,6 +207,7 @@ public class LoginView extends JPanel {
 
 		add(buttonsPanel, BorderLayout.SOUTH);
 
+		
 	}
 
 	private void initializeComponents() {

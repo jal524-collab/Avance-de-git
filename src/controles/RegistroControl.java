@@ -35,31 +35,49 @@ public class RegistroControl {
 
     private void registerListeners(){
 
-        view.getBtnValidate().addActionListener(e -> {
+    	view.getBtnValidate().addActionListener(e -> {
 
-            if(validateForm()){
-            	
-            	String imagePathString = saveImage();
+    	    if(validateForm()){
+    	        
+    	       
+    	        String userRole = view.getRole();
+    	        
+    	        
+    	        if (!"ADMIN".equalsIgnoreCase(userRole)) {
+    	            int confirm = JOptionPane.showConfirmDialog(
+    	                view, 
+    	                "¡Advertencia! El rol seleccionado no es ADMINISTRADOR. ¿Está seguro de que desea registrar este usuario?", 
+    	                "Rol No Autorizado / Advertencia", 
+    	                JOptionPane.YES_NO_OPTION, 
+    	                JOptionPane.WARNING_MESSAGE
+    	            );
+    	            
+    	           
+    	            if (confirm != JOptionPane.YES_OPTION) {
+    	                return; 
+    	            }
+    	        }
+    	        
+    	       
+    	        String imagePathString = saveImage();
 
-                UserModelo user = new UserModelo(
-                        view.getUserName(),
-                        view.getEmail(),
-                        view.getCountry(),
-                        view.getGender(),
-                        view.getDescription(),
-                        view.getProductos(),
-                        imagePathString,
-                        "ADMIN"
-                );
-                
-                registerUser(user);
-                
-                new HomeControl(new MainView());
-                view.dispose();
-
-            }
-
-        });
+    	        UserModelo user = new UserModelo(
+    	                view.getUserName(),
+    	                view.getEmail(),
+    	                view.getCountry(),
+    	                view.getGender(),
+    	                view.getDescription(),
+    	                view.getProductos(),
+    	                imagePathString,
+    	                userRole 
+    	        );
+    	        
+    	        registerUser(user);
+    	        
+    	        new HomeControl(new MainView());
+    	        view.dispose();
+    	    }
+    	});
 
         view.getBtnReturn().addActionListener(e -> {
 
@@ -87,10 +105,7 @@ public class RegistroControl {
                 	e.setKeyChar(Character.toUpperCase(c));
                 }
                 
-                //Que no tenga más de 10 caracteres
-                /*if(view.getTxtName().getText().length() >= 10){
-                    e.consume();
-                }*/
+               
             }
 
             @Override
@@ -112,6 +127,8 @@ public class RegistroControl {
             }
 
         });
+        
+        
 
         view.getTxtName().getDocument().addDocumentListener(new DocumentListener(){
 
